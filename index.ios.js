@@ -1,4 +1,4 @@
-import App from "./src/app/index";
+import Root from "./src/root";
 import { AppRegistry } from 'react-native';
 
-AppRegistry.registerComponent('Lyricify', () => App);
+AppRegistry.registerComponent('Lyricify', () => Root);
