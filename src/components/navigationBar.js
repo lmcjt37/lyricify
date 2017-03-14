@@ -15,14 +15,17 @@ export default (
                     return null;
                 }
                 return (
-                    <TouchableOpacity onPress={() => navigator.pop()}>
-                        <Text>Back</Text>
+                    <TouchableOpacity
+                        onPress={() => navigator.pop()}
+                        style={Styles.leftNavBarButton}
+                        >
+                        <Text style={Styles.navBarButtonText}>Back</Text>
                     </TouchableOpacity>
                 );
             },
             Title: (route) => {
                 return (
-                    <Text>{route.title}</Text>
+                    <Text style={Styles.navBarTitle}>{route.title}</Text>
                 );
             },
             RightButton: () => {

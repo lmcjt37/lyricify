@@ -3,11 +3,11 @@ import { Navigator } from 'react-native';
 
 import Home from "./controllers/home";
 import LyricPage from "./controllers/lyricPage";
+import ArtistPage from "./controllers/artistPage";
 
 import NavigationBar from './components/navigationBar'
 
 import Styles from './styles/style';
-import Scenes from './configs/scenes';
 
 export default class Root extends Component {
 
@@ -19,7 +19,17 @@ export default class Root extends Component {
               );
           case "LYRIC_PAGE":
               return (
-                  <LyricPage navigator={navigator} />
+                  <LyricPage
+                      title={ route.title }
+                      navigator={navigator}
+                  />
+              );
+          case "ARTIST_PAGE":
+              return (
+                  <ArtistPage
+                      title={ route.title }
+                      navigator={navigator}
+                  />
               );
       }
   }
@@ -27,7 +37,7 @@ export default class Root extends Component {
   render() {
     return (
       <Navigator
-        initialRoute={ Scenes.home }
+        initialRoute={{ "id": "HOME", "title": "Lyricify" }}
         renderScene={ this.renderScene }
         navigationBar={ NavigationBar }
         style={ Styles.navigation }

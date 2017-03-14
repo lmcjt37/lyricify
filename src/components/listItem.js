@@ -6,11 +6,13 @@ import {
 
 import Styles from '../styles/style';
 
-const ListItem = ({ index, title, subtitle }) => {
+const ListItem = ({ title, navState, navigator }) => {
     return (
-        <TouchableOpacity>
-            <Text style={ Styles.listItemTitle }>{ title }</Text>
-            <Text style={ Styles.listItemSubtitle }>{ subtitle }</Text>
+        <TouchableOpacity
+            style={ Styles.listViewItem }
+            onPress={ () => navigator.push(navState)}
+            >
+            <Text style={ Styles.listViewItemTitle }>{ title }</Text>
         </TouchableOpacity>
     );
 };

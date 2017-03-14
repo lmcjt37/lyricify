@@ -9,8 +9,9 @@ import {
 } from 'react-native';
 
 import Styles from '../styles/style';
+import Colours from '../configs/colours';
 import { debounce } from 'lodash';
-import { search } from '../utils/api';
+import { searchArtist } from '../utils/api';
 
 import ListItem from '../components/listItem';
 
@@ -21,48 +22,56 @@ export default class Home extends Component {
         const dataSource = new ListView.DataSource({
             rowHasChanged: (r1, r2) => r1 !== r2
         });
+
         this.state = {
             artists: dataSource
         };
     }
 
-    getArtists(query) {
-        debounce(() => {
-            searchArtist(query)
-                .then(result => {
-                    const artists = result.message.body.artist_list;
-                    this.setState({
-                        artists: this.state.artists.cloneWithRows(artists)
-                    });
-                })
-                .catch((error) => {
-                    throw error;
+    getArtists = debounce((query) => {
+        searchArtist(query)
+            .then(result => {
+                this.setState({
+                    artists: this.state.artists.cloneWithRows(result)
                 });
-        }, 500);
-    }
+            })
+            .catch((error) => {
+                throw error;
+            });
+    }, 400);
 
-    renderArtistRow(id, artist) {
+    renderArtistRow = (data) => {
+        const { navigator } = this.props;
+        const { artist_name } = data.artist;
+        const artist_state = {
+            id: "ARTIST_PAGE",
+            title: artist_name
+        };
         return (
             <ListItem
-                id={ id }
-                title={ artist.artist_name }
-                subtitle={ artist.artist_id }
+                title={ artist_name }
+                navigator={ navigator }
+                navState={ artist_state }
             />
         );
-    }
+    };
 
     render() {
         const { artists } = this.state;
         return (
             <View style={ Styles.container }>
                 <StatusBar
-                    backgroundColor="#0D1CF2"
+                    backgroundColor={ Colours.blue }
                     barStyle="light-content"
                 />
 
                 <TextInput
-                    style={ Styles.searchBar }
+                    autoCapitalize="none"
+                    autoCorrect={ false }
                     onChangeText={ this.getArtists }
+                    placeholder="Search artist"
+                    placeholderTextColor={ Colours.transWhite }
+                    style={ Styles.searchBar }
                 />
 
                 <ListView

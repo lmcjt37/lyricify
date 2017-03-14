@@ -9,7 +9,8 @@ export function searchArtist(query) {
     const requestUrl = `${Config.BASE_URL}artist.search?q_artist=${query}&page_size=20&page=0&apikey=${Config.API_KEY}`;
     return get(requestUrl)
         .then((response) => {
-            return response.songs ? response.songs : [];
+            const artistList = response.message.body.artist_list;
+            return artistList ? artistList : [];
         });
 }
 
