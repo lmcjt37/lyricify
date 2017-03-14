@@ -6,7 +6,7 @@ import {
 
 import Styles from '../styles/style';
 
-export default class LyricPage extends Component {
+export default class ArtistPage extends Component {
     constructor(props) {
         super(props);
     }
