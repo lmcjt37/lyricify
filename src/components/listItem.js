@@ -4,7 +4,7 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-import Styles from './styles/style';
+import Styles from '../styles/style';
 
 const ListItem = ({ index, title, subtitle }) => {
     return (
