@@ -4,6 +4,8 @@ import { Navigator } from 'react-native';
 import Home from "./controllers/home";
 import LyricPage from "./controllers/lyricPage";
 
+import NavigationBar from './components/navigationBar'
+
 import Styles from './styles/style';
 import Scenes from './configs/scenes';
 

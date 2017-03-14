@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
     ListView,
     Text,
@@ -7,13 +7,13 @@ import {
     View
 } from 'react-native';
 
-import Styles from './styles/style';
+import Styles from '../styles/style';
 
 export default class LyricPage extends Component {
     render() {
         return (
             <View>
-                
+
             </View>
         );
     }

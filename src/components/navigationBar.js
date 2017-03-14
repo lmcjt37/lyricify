@@ -5,13 +5,13 @@ import {
     TouchableOpacity
 } from 'react-native';
 
-import Styles from './styles/style';
+import Styles from '../styles/style';
 
 export default (
     <Navigator.NavigationBar
         routeMapper={{
             LeftButton: (route, navigator) => {
-                if (route.name === "HOME") {
+                if (route.id === "HOME") {
                     return null;
                 }
                 return (

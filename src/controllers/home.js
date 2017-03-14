@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import {
     ListView,
     StatusBar,
@@ -8,30 +8,31 @@ import {
     View
 } from 'react-native';
 
-import Styles from './styles/style';
+import Styles from '../styles/style';
 import { debounce } from 'lodash';
-import { search } from './utils/api';
+import { search } from '../utils/api';
 
-import ListItem from './components/listItem';
+import ListItem from '../components/listItem';
 
 export default class Home extends Component {
     constructor(props) {
         super(props);
 
-        const dataSource = new ListView.dataSource({
+        const dataSource = new ListView.DataSource({
             rowHasChanged: (r1, r2) => r1 !== r2
         });
         this.state = {
-            songs: dataSource
+            artists: dataSource
         };
     }
 
-    getSongs(query) {
+    getArtists(query) {
         debounce(() => {
-            search(query)
-                .then(songs => {
+            searchArtist(query)
+                .then(result => {
+                    const artists = result.message.body.artist_list;
                     this.setState({
-                        songs: this.state.songs.cloneWithRows(songs)
+                        artists: this.state.artists.cloneWithRows(artists)
                     });
                 })
                 .catch((error) => {
@@ -40,18 +41,18 @@ export default class Home extends Component {
         }, 500);
     }
 
-    renderRow(id, song) {
+    renderArtistRow(id, artist) {
         return (
             <ListItem
                 id={ id }
-                title={ song.name }
-                subtitle={ song.artist }
+                title={ artist.artist_name }
+                subtitle={ artist.artist_id }
             />
         );
     }
 
     render() {
-        const { songs } = this.state;
+        const { artists } = this.state;
         return (
             <View style={ Styles.container }>
                 <StatusBar
@@ -61,12 +62,12 @@ export default class Home extends Component {
 
                 <TextInput
                     style={ Styles.searchBar }
-                    onChangeText={ this.getSongs }
+                    onChangeText={ this.getArtists }
                 />
 
                 <ListView
-                    dataSource={ songs }
-                    renderRow={ this.renderRow }
+                    dataSource={ artists }
+                    renderRow={ this.renderArtistRow }
                     style={ Styles.listView }
                 />
 
