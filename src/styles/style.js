@@ -25,13 +25,11 @@ const styles = StyleSheet.create({
     justifyContent: 'space-between'
   },
   navBarTitle: {
-      backgroundColor: "green",
       color: Colours.white,
       fontSize: 17,
       paddingTop: 8
   },
   leftNavBarButton: {
-      backgroundColor: "purple",
       marginLeft: 10,
       paddingTop: 10
   },
