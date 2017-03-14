@@ -20,6 +20,7 @@ export default class Root extends Component {
           case "LYRIC_PAGE":
               return (
                   <LyricPage
+                      data={ route.data }
                       title={ route.title }
                       navigator={navigator}
                   />
@@ -27,6 +28,7 @@ export default class Root extends Component {
           case "ARTIST_PAGE":
               return (
                   <ArtistPage
+                      data={ route.data }
                       title={ route.title }
                       navigator={navigator}
                   />

@@ -42,14 +42,18 @@ export default class Home extends Component {
 
     renderArtistRow = (data) => {
         const { navigator } = this.props;
-        const { artist_name } = data.artist;
+        const { artist_name, artist_id } = data.artist;
         const artist_state = {
             id: "ARTIST_PAGE",
-            title: artist_name
+            title: artist_name,
+            data: {
+                artist_id
+            }
         };
         return (
             <ListItem
                 title={ artist_name }
+                id={ artist_id }
                 navigator={ navigator }
                 navState={ artist_state }
             />
