@@ -14,7 +14,7 @@ export default class ArtistPage extends Component {
     render() {
         const { title } = this.props;
         return (
-            <View>
+            <View style={ Styles.container }>
                 <Text>{title}</Text>
             </View>
         );
