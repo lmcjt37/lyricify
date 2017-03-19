@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { Navigator } from 'react-native';
 
 import Home from "./controllers/home";
-import LyricPage from "./controllers/lyricPage";
 import ArtistPage from "./controllers/artistPage";
+import AlbumPage from "./controllers/albumPage";
+import LyricPage from "./controllers/lyricPage";
 
 import NavigationBar from './components/navigationBar'
 
@@ -17,17 +18,25 @@ export default class Root extends Component {
               return (
                   <Home navigator={navigator} />
               );
-          case "LYRIC_PAGE":
+          case "ARTIST_PAGE":
               return (
-                  <LyricPage
+                  <ArtistPage
                       data={ route.data }
                       title={ route.title }
                       navigator={navigator}
                   />
               );
-          case "ARTIST_PAGE":
+          case "ALBUM_PAGE":
               return (
-                  <ArtistPage
+                  <AlbumPage
+                      data={ route.data }
+                      title={ route.title }
+                      navigator={navigator}
+                  />
+              );
+          case "LYRIC_PAGE":
+              return (
+                  <LyricPage
                       data={ route.data }
                       title={ route.title }
                       navigator={navigator}
