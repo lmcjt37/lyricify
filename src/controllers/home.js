@@ -11,7 +11,7 @@ import {
 import Styles from '../styles/style';
 import Colours from '../configs/colours';
 import { debounce } from 'lodash';
-import { searchArtist } from '../utils/api';
+import { searchArtists } from '../utils/api';
 
 import ListItem from '../components/listItem';
 
@@ -29,7 +29,7 @@ export default class Home extends Component {
     }
 
     getArtists = debounce((query) => {
-        searchArtist(query)
+        searchArtists(query)
             .then(result => {
                 this.setState({
                     artists: this.state.artists.cloneWithRows(result)

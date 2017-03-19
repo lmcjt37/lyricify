@@ -60,6 +60,17 @@ const styles = StyleSheet.create({
       fontSize: 17,
       paddingHorizontal: 10,
       paddingVertical: 15
+  },
+  listViewItemInnerContainer: {
+      alignItems: 'center',
+      flex: 1,
+      flexDirection: 'row',
+      justifyContent: 'flex-start'
+  },
+  listViewItemImage: {
+      height: 40,
+      padding: 2,
+      width: 40
   }
 });
 
