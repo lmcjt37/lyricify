@@ -31,3 +31,12 @@ export function searchTracks(query) {
             return trackList ? trackList : [];
         });
 }
+
+export function searchLyrics(query) {
+    const requestUrl = `${Config.BASE_URL}track.lyrics.get?track_id=${query}&apikey=${Config.API_KEY}`;
+    return get(requestUrl)
+        .then((response) => {
+            const lyrics = response.message.body.lyrics;
+            return lyrics ? lyrics : {};
+        });
+}
