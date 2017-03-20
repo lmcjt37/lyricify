@@ -27,6 +27,7 @@ export function searchTracks(query) {
     const requestUrl = `${Config.BASE_URL}album.tracks.get?album_id=${query}&f_has_lyrics=1&apikey=${Config.API_KEY}`;
     return get(requestUrl)
         .then((response) => {
-            return response.songs ? response.songs : [];
+            const trackList = response.message.body.track_list;
+            return trackList ? trackList : [];
         });
 }
