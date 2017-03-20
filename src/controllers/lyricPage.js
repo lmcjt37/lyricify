@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {
+    Image,
     ScrollView,
     StatusBar,
     Text,
@@ -16,7 +17,8 @@ export default class LyricPage extends Component {
 
         this.state = {
             lyrics: "",
-            copyright: ""
+            copyright: "",
+            trackingUrl: ""
         };
     }
 
@@ -24,10 +26,10 @@ export default class LyricPage extends Component {
         const { track_id } = this.props.data;
         searchLyrics(track_id)
             .then(result => {
-                const lyricsBody = result.lyrics_body ? result.lyrics_body.substring(0, result.lyrics_body.indexOf("***")) : "We don't appear to know the words to this one."
                 this.setState({
-                    lyrics: lyricsBody,
-                    copyright: result.lyrics_copyright ? result.lyrics_copyright : "Lyrics powered by www.musixmatch.com. This Lyrics is NOT for Commercial use and only 30% of the lyrics are returned."
+                    lyrics: result.lyrics_body ? result.lyrics_body.substring(0, result.lyrics_body.indexOf("***")) : "We don't appear to know the words to this one.",
+                    copyright: result.lyrics_copyright ? result.lyrics_copyright : "Lyrics powered by www.musixmatch.com. This Lyrics is NOT for Commercial use and only 30% of the lyrics are returned.",
+                    trackingUrl: result.pixel_tracking_url
                 });
             })
             .catch((error) => {
@@ -40,7 +42,12 @@ export default class LyricPage extends Component {
     }
 
     render() {
-        const { lyrics, copyright } = this.state;
+        const { lyrics, copyright, trackingUrl } = this.state;
+        let getTrackingImage = () => {
+            if (trackingUrl.length > 0) {
+                return <Image source={{ uri: trackingUrl }} />;
+            }
+        }
         return (
             <View style={ Styles.container }>
 
@@ -56,6 +63,8 @@ export default class LyricPage extends Component {
                 <View style={ Styles.copyrightContainer}>
                     <Text style={ Styles.copyright }>{copyright}</Text>
                 </View>
+
+                { getTrackingImage() }
 
             </View>
         );
