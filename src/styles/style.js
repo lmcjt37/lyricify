@@ -71,6 +71,24 @@ const styles = StyleSheet.create({
       height: 40,
       padding: 2,
       width: 40
+  },
+  scrollView: {
+      paddingHorizontal: 20,
+      paddingVertical: 20
+  },
+  lyrics: {
+      color: Colours.black,
+      flex: 1,
+      fontSize: 17,
+      textAlign: "center"
+  },
+  copyrightContainer: {
+      backgroundColor: Colours.blue
+  },
+  copyright: {
+      color: Colours.white,
+      fontSize: 14,
+      padding: 10
   }
 });
 
