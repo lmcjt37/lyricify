@@ -7,6 +7,7 @@ import {
     TouchableOpacity,
     View
 } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import Styles from '../styles/style';
 import Colours from '../configs/colours';
@@ -69,14 +70,22 @@ export default class Home extends Component {
                     barStyle="light-content"
                 />
 
-                <TextInput
-                    autoCapitalize="none"
-                    autoCorrect={ false }
-                    onChangeText={ this.getArtists }
-                    placeholder="Search artist"
-                    placeholderTextColor={ Colours.transWhite }
-                    style={ Styles.searchBar }
-                />
+                <View style={ Styles.searchBarContainer }>
+                    <TextInput
+                        autoCapitalize="none"
+                        autoCorrect={ false }
+                        onChangeText={ this.getArtists }
+                        placeholder="Search artist"
+                        placeholderTextColor={ Colours.transWhite }
+                        style={ Styles.searchBar }
+                    />
+                    <Icon
+                        name="search"
+                        size={20}
+                        color={ Colours.white }
+                        style={ Styles.searchBarIcon }
+                    />
+                </View>
 
                 <ListView
                     dataSource={ artists }
