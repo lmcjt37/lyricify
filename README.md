@@ -10,6 +10,12 @@ This is a simple app written using React-Native designed to display song lyrics.
 4a. Run `npm run build:ios` to build and start up the app in your ios simulator
 4b. Run `npm run build:android` to build and deploy to a running device or emulator
 
+## Acknowledgements
+
+* [developer.musixmatch.com](https://developer.musixmatch.com/) - Provides lyrics via the API
+* [react-native-vector-icons](https://github.com/oblador/react-native-vector-icons) - Provides vector based font icons
+
+
 ## Contact
 Feel free to contact me directly through twitter @lmcjt or my website [lmcjt.com](http://lmcjt.com)
 
