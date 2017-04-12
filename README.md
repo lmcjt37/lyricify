@@ -5,8 +5,10 @@ This is a simple app written using React-Native designed to display song lyrics.
 
 ## Getting Started
 1. Clone this repository
-2. Run `npm install && npm run build:ios`, this will install all dependencies, build and start up the app in your ios simulator
-3. Running `npm run build:android` will attempt to build deploy to a device or emulator if you have one already running.
+2. Run `npm install`, this will install all dependencies
+3. You will need to sign-up for a [developer.musixmatch.com](https://developer.musixmatch.com/) account and create an app for a unique API key. Paste your API key into the `./src/configs/core.js` file
+4a. Run `npm run build:ios` to build and start up the app in your ios simulator
+4b. Run `npm run build:android` to build and deploy to a running device or emulator
 
 ## Contact
 Feel free to contact me directly through twitter @lmcjt or my website [lmcjt.com](http://lmcjt.com)
